@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ten zegar stary...</title>
+  <style>
+    .container {
+      background-image: linear-gradient(to right, #fdfb86, #ffef5e);
+      padding: 20px;
+      border:#000 3px solid;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-image:url(tlo.jpg);
+      height: 100%;
+  background-position: 0% 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    
+    .menu {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #000;
+      margin: 0 10px;
+      padding: 5px 10px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+
+    .menu a:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+
+.clock {
+  background-color: #acacac;
+  border-radius: 50%;
+  border: 0.5rem solid #777;
+  box-shadow: 0.5rem 0.5rem 1rem #555, -0.5rem -0.5rem 1rem #555;
+  bottom: 100px;
+  right: 10px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  text-align: center;
+  
+
+}
+.numbers {
+  width: inherit;
+  height: inherit;
+  position: relative;
+}
+
+.numbers div {
+  position: absolute;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 0.2rem 0.2rem 0.2rem #222;
+}
+
+.twelve {
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.three {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.six {
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nine {
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrows {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrows::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0.2rem 0.2rem 0.5rem #777;
+  z-index: 10;
+}
+
+.arrows div {
+  width: 0.7rem;
+  height: 8rem;
+  background-color: #fff0f5;
+  position: absolute;
+  bottom: 50%;
+  box-shadow: 0.2rem 0.2rem 0.5rem #777;
+  border-radius: 100% 100% 0 0;
+  transform-origin: bottom center;
+}
+
+.arrows .hour {
+  height: 4rem;
+  transform: rotate(90deg);
+}
+.arrows .minute {
+  height: 5rem;
+  transform: rotate(90deg);
+}
+
+.arrows .second {
+  height: 6rem;
+  background-color: #f70000;
+  transform: rotate(270deg);
+}
+    </style>
+   
+</head>
+<body>
+    <div class="clock">
+      <div class="numbers">
+        <div class="twelve">12</div>
+        <div class="three">3</div>
+        <div class="six">6</div>
+        <div class="nine">9</div>
+      </div>
+      <div class="arrows">
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+        </div>
+        <div id="czas" style="margin: 15px;"></div>
+  </div>
+
+  <script>const hour = document.querySelector(".hour");
+    const minute = document.querySelector(".minute");
+    const second = document.querySelector(".second");
+    
+    function setDate() {
+      const now = new Date();
+    
+      const getSecond = now.getSeconds();
+      const getMinute = now.getMinutes();
+      const getHour = now.getHours();
+    
+      const secondDegree = (getSecond / 60) * 360;
+      const minuteDegree = (getMinute / 60) * 360;
+      const hourDegree = (getHour / 12) * 360;
+    
+      second.style.transform = `rotate(${secondDegree}deg)`;
+      minute.style.transform = `rotate(${minuteDegree}deg)`;
+      hour.style.transform = `rotate(${hourDegree}deg)`;
+    }
+    
+    setInterval(setDate, 1000);</script>
+
+</head>
+<body>
+  <div class="container">
+  <h1>Ten zegar stary ...</h1>
+  <div class="menu">
+      <a href="osczasu.html">Oś czasu historii zegarów</a>
+      <a href="zegarzwychwytem.html">Zegar z wychwytem</a>
+    </div>
+  </div>
+
+  <div style="background:rgba(255, 255, 255, 0.719);  font-size: 30px; padding-bottom: 30px; margin-top: 0; max-width: 800px; padding-left: 20px; padding-right: 20px; padding-top: 0;
+  margin: 0 auto; border: 1px solid #000;">
+  <h1>Jak działa zegar kwarcowy?</h1>
+  <p> Zegar posiadający tarczę ze wskazówkami, w którym do odmierzania czasu wykorzystuje się drgający kryształ kwarcu nazywany rezonatorem kwarcowym.</p>
+  <p> Działanie zegara kwarcowego opiera się na zjawisku piezoelektrycznym. Zasilany z baterii elektroniczny generator drgań ma w obwodzie sprzężenia zwrotnego kryształ kwarcu drgający z częstotliwością 215=32768 Hz. Drgania wytwarzają impulsy elektryczne, które przechodzą przez zespół dzielników częstotliwości.</p>
+  <p>o każdym z tych jednosekundowych impulsów układ cyfrowy zmienia wskazanie na wyświetlaczu (w przypadku zegarków elektronicznych) lub przesuwa wskazówkę sekundnika o 1/60 pełnego obrotu (w przypadku zegarków wskazówkowych). Impulsy są również wykorzystywane do obliczania setnych części sekundy (w stoperze) oraz do obliczania godziny i daty.</p>  
+</div>
+
+  <div class="event-details">
+    <strong id="event-title"></strong>
+    <p id="event-date"></p>
+  </div>
+
+  <script>
+    function showDetails(title, date) {
+      document.getElementById('event-title').innerHTML = title;
+      document.getElementById('event-date').innerHTML = date;
+      document.querySelector('.event-details').style.display = 'block';
+    }
+
+    function hideDetails() {
+      document.querySelector('.event-details').style.display = 'none';
+    }
+  </script>
+  <script>
+    function aktualnyCzas() {
+        var data = new Date();
+        var godzina = data.getHours();
+        var minuta = data.getMinutes();
+        var sekunda = data.getSeconds();
+
+        if (godzina < 10) {
+            godzina = "0" + godzina;
+        }
+        if (minuta < 10) {
+            minuta = "0" + minuta;
+        }
+        if (sekunda < 10) {
+            sekunda = "0" + sekunda;
+        }
+
+        var czas = godzina + ":" + minuta + ":" + sekunda;
+        document.getElementById("czas").textContent = czas;
+    }
+
+    setInterval(aktualnyCzas, 1000);
+</script>
+</body>
+</html>

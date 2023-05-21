@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ten zegar stary...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image:url(tlo2.jpg);
+      height: 100%;
+  background-position: 0% 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .timeline {
+      width: 100%;
+      height: 100px;
+      position: relative;
+      border-bottom: 2px solid #ccc;
+      overflow-x: scroll;
+      white-space: nowrap;
+      background-color: #e0e0e0;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 245%;
+      height: 2px;
+      background-color: #ccc;
+      
+    }
+    .container {
+      background-image: linear-gradient(to right, #fdfb86, #ffef5e);
+      padding: 20px;
+      border:#000 3px solid;
+    }
+
+    .event {
+      position: absolute;
+      height: 20px;
+      width: 10px;
+      background-color: #000;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .event-details {
+      position: absolute;
+      top: 300px;
+      display: none;
+      text-align: center;
+      width: 200px;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .event-details strong {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .event-date {
+      position: absolute;
+      font-size: 12px;
+      text-align: center;
+      width: 80px;
+      color: #888;
+      top: 60%;
+      transform: translateX(-50%);
+    }
+    .menu {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: #000;
+      margin: 0 10px;
+      padding: 5px 10px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+
+    .menu a:hover {
+      background-color: #000;
+      color: #fff;
+    }
+
+
+.clock {
+  background-color: #acacac;
+  border-radius: 50%;
+  border: 0.5rem solid #777;
+  box-shadow: 0.5rem 0.5rem 1rem #555, -0.5rem -0.5rem 1rem #555;
+  bottom: 100px;
+  right: 10px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  text-align: center;
+  
+
+}
+.numbers {
+  width: inherit;
+  height: inherit;
+  position: relative;
+}
+
+.numbers div {
+  position: absolute;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 0.2rem 0.2rem 0.2rem #222;
+}
+
+.twelve {
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.three {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.six {
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nine {
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrows {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrows::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0.2rem 0.2rem 0.5rem #777;
+  z-index: 10;
+}
+
+.arrows div {
+  width: 0.7rem;
+  height: 8rem;
+  background-color: #fff0f5;
+  position: absolute;
+  bottom: 50%;
+  box-shadow: 0.2rem 0.2rem 0.5rem #777;
+  border-radius: 100% 100% 0 0;
+  transform-origin: bottom center;
+}
+
+.arrows .hour {
+  height: 4rem;
+  transform: rotate(90deg);
+}
+.arrows .minute {
+  height: 5rem;
+  transform: rotate(90deg);
+}
+
+.arrows .second {
+  height: 6rem;
+  background-color: #f70000;
+  transform: rotate(270deg);
+}
+    </style>
+   
+</head>
+<body>
+    <div class="clock">
+      <div class="numbers">
+        <div class="twelve">12</div>
+        <div class="three">3</div>
+        <div class="six">6</div>
+        <div class="nine">9</div>
+      </div>
+      <div class="arrows">
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+        </div>
+        <div id="czas" style="margin: 15px;"></div>
+  </div>
+
+  <script>const hour = document.querySelector(".hour");
+    const minute = document.querySelector(".minute");
+    const second = document.querySelector(".second");
+    
+    function setDate() {
+      const now = new Date();
+    
+      const getSecond = now.getSeconds();
+      const getMinute = now.getMinutes();
+      const getHour = now.getHours();
+    
+      const secondDegree = (getSecond / 60) * 360;
+      const minuteDegree = (getMinute / 60) * 360;
+      const hourDegree = (getHour / 12) * 360;
+    
+      second.style.transform = `rotate(${secondDegree}deg)`;
+      minute.style.transform = `rotate(${minuteDegree}deg)`;
+      hour.style.transform = `rotate(${hourDegree}deg)`;
+    }
+    
+    setInterval(setDate, 1000);</script>
+
+</head>
+<body>
+  <div class="container">
+  <h1>Ten zegar stary ...</h1>
+  <div class="menu">
+      <a href="zegarkwarcowy.html">Zegar kwarcowy</a>
+      <a href="zegarzwychwytem.html">Zegar z wychwytem</a>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="event" style="left: 1%;" onmouseover="showDetails('Pierwszy zegar słoneczny - 3500pne.', '-3500ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 5%;" onmouseover="showDetails('Zbudowanie Stonehenge - 2000pne.', '-2000ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 10%;" onmouseover="showDetails('Odmierzanie czasu za pomocą spalanie oleju, kadzidła czy świec - 1400pne.', '-1400ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 15%;" onmouseover="showDetails('Pierwsze odkrycie zegara słonecznego - 742 pne.', '-742ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 20%;" onmouseover="showDetails('Proste koła zębate - 300pne.', '-300ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 25%;" onmouseover="showDetails('Używanie klepsydr - 300ne.', '300ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 30%;" onmouseover="showDetails('Odmierzanie czasu przez spalanie świecy - 885ne.', '885ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 35%;" onmouseover="showDetails('Pierwszy zegar wodny - 1092ne.', '1092ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 40%;" onmouseover="showDetails('Pierwszy zegarmistrzowie - 1368pne.', '1368ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 45%;" onmouseover="showDetails('Pierwsza sprężyna napędowa - 1490ne.', '1490ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 50%;" onmouseover="showDetails('Pierwsze zegary stołowe - 1500ne.', '1500ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 55%;" onmouseover="showDetails('Pierwszy mechaniczy zegarek przypinany np. do paska - 1510ne.', '1510ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 60%;" onmouseover="showDetails('Najstarszy zachowany zegar mechaniczny - 1530ne.', '1530ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 65%;" onmouseover="showDetails('Powstawały coraz mniejsze modele zegarków - 1540ne.', '1540ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 70%;" onmouseover="showDetails('Pierwszy zegar wieżowy na wieży pałacu Hampton Court w Anglii - 1541ne.', '1541ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 75%;" onmouseover="showDetails('Opracowanie wskazówki minutowej - 1577ne.', '1577ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 80%;" onmouseover="showDetails('Odkrycie właściwości wahadła - 1581ne.', '1581ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 85%;" onmouseover="showDetails('Genewa jako kwitnący dom przemysłu zegarmistrzowskiego - 1587ne.', '1587ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 90%;" onmouseover="showDetails('Szkło ochronne na zegarki - 1610ne.', '1610ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 95%;" onmouseover="showDetails('Pierwsze emaliowane tarcze zegarowe - 1635ne.', '1635ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 100%;" onmouseover="showDetails('Pierwszy zegar sterowany przez wahadło - 1657ne.', '1657ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 105%;" onmouseover="showDetails('Wprowadzenie sprężyny wahadłowej do zegarków - 1671ne.', '1671ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 110%;" onmouseover="showDetails('Prace nad mechaniznem powtarzającym w zegarkach oraz prezentacja koncentrycznej wskazówki - 1676ne.', '1676ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 115%;" onmouseover="showDetails('Rubiny i szafiry jako ozdobne łożyska na osi balansu - 1704ne.', '1704ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 120%;" onmouseover="showDetails('Wiele ważnych wynalazków dla dziedziny zegarmistrzostwa takie jak wahadło z kompensacją grid-iron lub układ cylinder escapement', '1720ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 125%;" onmouseover="showDetails('Zwiększenie dokładności tanich zegarków poprzez temperaturowo kompensowane koło balansowe', '1760ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 130%;" onmouseover="showDetails('Stworzenie ukłądu wyłączającego dźwigniowego', '1785ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 135%;" onmouseover="showDetails('Pierwszy zegar elektryczny', '1840ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 140%;" onmouseover="showDetails('Utworzenie Brytyjskiego Instytutu Horologicznego', '1858ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 145%;" onmouseover="showDetails('Standaryzacja stref czasowych', '1880ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 150%;" onmouseover="showDetails('Pierwszy nowoczesny zegar elektryczny który stał się podstawą do zegarów tworzonych dzisiaj', '1895ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 155%;" onmouseover="showDetails('Masowa produkcja zegarków osobistych', '1900ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 160%;" onmouseover="showDetails('Sygnały czasu radiowego z Waszyngtonu pomagały odnajdywać się statkom', '1905ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 165%;" onmouseover="showDetails('Wprowadzenie czasu letniego', '1916ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 170%;" onmouseover="showDetails('Propozycja używania oscylacji atomów do tworzenia bardziej precyzyjnych zegarków', '1945ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 175%;" onmouseover="showDetails('Stworzenie pierwszego zegaru atomowego', '1949ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 180%;" onmouseover="showDetails('Sekunda została zdefiniowana jako 9 192 631 770 drgań cezu', '1967ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 185%;" onmouseover="showDetails('Wynalezienie kwarcowego zegarka na baterie', '1969ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 190%;" onmouseover="showDetails('Pierwsze zegarki na pasku z kwarcowym mechanizmem', '1972ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 195%;" onmouseover="showDetails('Wynalezienie cyfrowych zegarków na rękę', '1970ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 200%;" onmouseover="showDetails('Rozwój zegarków napędzanych energią słoneczną', '1978ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 205%;" onmouseover="showDetails('Wprowadzenie zegarków z wyświetlaczem LCD', '1980ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 210%;" onmouseover="showDetails('Pierwsze zegarki napędzane energią kinetyczną', '1988ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 215%;" onmouseover="showDetails('Pierwszy zegarek na rękę z mechanizmem kinetycznym', '1988ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 220%;" onmouseover="showDetails('Wynalezienie pierwszego zegarka z wbudowanym telefonem komórkowym', '1999ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 225%;" onmouseover="showDetails('Rozwój zegarków inteligentnych', '2010ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 230%;" onmouseover="showDetails('Pierwszy zegarek z wyświetlaczem E Ink', '2013ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 235%;" onmouseover="showDetails('Pierwszy zegarek z systemem Android Wear', '2014ne.')" onmouseout="hideDetails()"></div>
+    <div class="event" style="left: 240%;" onmouseover="showDetails('Rozwój zegarków hybrydowych łączących tradycyjne wygląd z funkcjonalnością smartwatcha', '2016ne.')" onmouseout="hideDetails()"></div>
+    <div class="arrow"></div>
+  </div>
+  <div style="background:rgba(255, 255, 255, 0.719); font-size: 30px; padding-bottom: 20px; margin-top: 0; max-width: 800px; padding-left: 20px; padding-right: 20px; padding-top: 0;
+  margin: 0 auto; border: 1px solid #000;">
+  <p>Strona prezentuje kluczowe wydarzenia i kamienie milowe z historii zegarów na jednej przystępnej osi czasu.</p>
+    Na osi czasu są umieszczone kluczowe daty, które reprezentują przełomowe momenty w historii zegarów, takie jak wynalezienie pierwszego mechanicznego zegara, wprowadzenie wahadła, odkrycie zegarków kieszonkowych, rozwój zegarków elektronicznych itp.
+  <p>Najechanie na czarny prostokąt na osi pokaże krótką informację i rok.</div>
+
+  <div class="event-details">
+    <strong id="event-title"></strong>
+    <p id="event-date"></p>
+  </div>
+
+  <script>
+    function showDetails(title, date) {
+      document.getElementById('event-title').innerHTML = title;
+      document.getElementById('event-date').innerHTML = date;
+      document.querySelector('.event-details').style.display = 'block';
+    }
+
+    function hideDetails() {
+      document.querySelector('.event-details').style.display = 'none';
+    }
+  </script>
+  <script>
+    function aktualnyCzas() {
+        var data = new Date();
+        var godzina = data.getHours();
+        var minuta = data.getMinutes();
+        var sekunda = data.getSeconds();
+
+        if (godzina < 10) {
+            godzina = "0" + godzina;
+        }
+        if (minuta < 10) {
+            minuta = "0" + minuta;
+        }
+        if (sekunda < 10) {
+            sekunda = "0" + sekunda;
+        }
+
+        var czas = godzina + ":" + minuta + ":" + sekunda;
+        document.getElementById("czas").textContent = czas;
+    }
+
+    setInterval(aktualnyCzas, 1000);
+</script>
+</body>
+</html>
